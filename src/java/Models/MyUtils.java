@@ -27,7 +27,7 @@ public class MyUtils {
  
     // Get the user information stored in the session.
     public static User getLoginedUser(HttpSession session) {
-        User loginedUser = (User) session.getAttribute("loginedUser");
+        User loginedUser = (User) session.getAttribute("UserInfo");
         return loginedUser;
     }
  

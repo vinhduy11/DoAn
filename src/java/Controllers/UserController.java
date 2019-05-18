@@ -8,6 +8,7 @@ package Controllers;
 import Models.MyUtils;
 import Models.User;
 import Models.UserDAO;
+import Utils.Email;
 import Utils.verifyUtils;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,6 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.mail.Multipart;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -44,6 +46,7 @@ public class UserController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            HttpSession session = request.getSession();
             String username = request.getParameter("username");
             String password = request.getParameter("password");
             String doAction = request.getParameter("doAction");
@@ -133,6 +136,20 @@ public class UserController extends HttpServlet {
 
                                 if (result == 1)
                                 {
+                                    String to_add = user.getEmail();
+                                    String subject = "Xac nhan thong tin tai khoan";
+                                    String content = "<html>"
+                                            + "<meta charset=\"UTF-8\">"
+                                            + "<body>"
+                                            + "Bạn đã đăng ký tài khoản vào trang web Super Shop. <br />"
+                                            + "Thông tin tài khoản là: <br />"
+                                            + "Tài khoản: "+username+"<br />"
+                                            + "Xin vui lòng nhấp vào link sau để xác nhận thông tin. Xin cảm ơn. <br />"
+                                            + "<a href='http://localhost:8080/DoAn/verifyUserController?username="+username+"'>Xác nhận tài khoản</a>"
+                                            + "</body>"
+                                                    + "</html>";
+
+                                    Email.getInstance().sendEmail(to_add, subject, content);
                                     response.sendRedirect("/DoAn/index.jsp");
                                 }
                                 else
@@ -156,6 +173,44 @@ public class UserController extends HttpServlet {
                     }
                     
                     break;
+                case "update":
+                    Boolean status = false;
+                    user = new User();
+                    username = request.getParameter("username");
+                    fullname = request.getParameter("fullname");
+                    phone_number = request.getParameter("phone_number");
+                    gender = Integer.parseInt(request.getParameter("gender"));
+                    date_of_birth = request.getParameter("date_of_birth");
+
+                    user.setUsername(username);
+                    user.setFullname(fullname);
+                    user.setMobile_phone(phone_number);
+                    user.setGender(gender);
+                    user.setDate_of_birth(date_of_birth);
+                    
+                    if (user != null) {
+                        status = UserDAO.update(user);
+                    }
+                    
+                    if (status != true) {
+                        errorMsg =  "<div class=\"alert alert-danger\" role=\"alert\">\n" +
+                                    "  Cập nhật thông tin thất bại\n" +
+                                    "</div>";
+                        request.setAttribute("errorMsg", errorMsg);
+                        RequestDispatcher dispatcher //
+                            = this.getServletContext().getRequestDispatcher("/account_details.jsp");
+                        dispatcher.forward(request, response);
+                    } else {
+                        MyUtils.storeLoginedUser(session, user);
+                        errorMsg =  "<div class=\"alert alert-success\" role=\"alert\">\n" +
+                                    "  Cập nhật thông tin thành công!\n" +
+                                    "</div>";
+                        request.setAttribute("errorMsg", errorMsg);
+                        response.sendRedirect("/DoAn/account_details.jsp");
+                    }
+                    
+                    
+                    break;
                 case "login":
                     if (username == null || username.length() == 0)
                     {
@@ -173,7 +228,7 @@ public class UserController extends HttpServlet {
                         user = UserDAO.validate(username, password);
                         if (user != null)
                         {
-                            HttpSession session = request.getSession();
+                            
                             MyUtils.storeLoginedUser(session, user);
                             response.sendRedirect(request.getContextPath() + "/index.jsp");
                         }
@@ -197,7 +252,6 @@ public class UserController extends HttpServlet {
                     
                     break;
                 case "logout":
-                    HttpSession session=request.getSession();
             
                     if ((Boolean) session.getAttribute("isLogged")) {
                         session.invalidate();

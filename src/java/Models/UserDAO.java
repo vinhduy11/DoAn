@@ -40,9 +40,56 @@ public class UserDAO {
             preparedStatement.setString(5, user.getEmail());
             preparedStatement.setInt(6, user.getGender());
             preparedStatement.setString(7, user.getDate_of_birth());
-            preparedStatement.setInt(8, 1);
+            preparedStatement.setInt(8, 0);
             preparedStatement.execute();
             status = 1;
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            connect.close();
+        }
+        
+        return status;
+    }
+    
+    public static Boolean verifyStatus(String username) throws Exception {
+        Boolean status = false;
+        try
+        {
+            connect = db.connect();
+
+            PreparedStatement preparedStatement = connect
+                        .prepareStatement("UPDATE customers SET status = ? WHERE username = ?");
+            preparedStatement.setInt(1, 1);
+            preparedStatement.setString(2, username);
+            
+            preparedStatement.execute();
+            status = true;
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            connect.close();
+        }
+        
+        return status;
+    }
+    
+    public static Boolean update(User user) throws Exception {
+        Boolean status = false;
+        try
+        {
+            connect = db.connect();
+
+            PreparedStatement preparedStatement = connect
+                        .prepareStatement("UPDATE customers SET full_name = ?, mobile_phone = ?, gender = ?, date_of_birth = ? WHERE username = ?");
+            preparedStatement.setString(1, user.getFullname());
+            preparedStatement.setString(2, user.getMobile_phone());
+            preparedStatement.setInt(3, user.getGender());
+            preparedStatement.setString(4, user.getDate_of_birth());
+            preparedStatement.setString(5, user.getUsername());
+            
+            preparedStatement.execute();
+            status = true;
         } catch (Exception e) {
             throw e;
         } finally {
@@ -60,9 +107,40 @@ public class UserDAO {
 
             PreparedStatement preparedStatement = connect
                         .prepareStatement(  
-            "select * from customers where username=? and password=?");  
+            "select * from customers where username=? and password=? and status = 1");  
             preparedStatement.setString(1,username);  
             preparedStatement.setString(2,password);  
+            ResultSet rs = preparedStatement.executeQuery();
+            if (rs.next()) {
+                User user = new User();
+                user.setUsername(rs.getString("username"));
+                user.setFullname(rs.getString("full_name"));
+                user.setMobile_phone(rs.getString("mobile_phone"));
+                user.setEmail(rs.getString("email"));
+                user.setGender(rs.getInt("gender"));
+                user.setDate_of_birth(rs.getString("date_of_birth"));
+                
+                return user;
+            }
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            connect.close();
+        }
+        
+        return null;
+    }
+    
+    public static User getUserInfos(String username) throws Exception{
+
+        try
+        {
+            connect = db.connect();
+
+            PreparedStatement preparedStatement = connect
+                        .prepareStatement(  
+            "select * from customers where username=? and status = 1");  
+            preparedStatement.setString(1,username);  
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
                 User user = new User();

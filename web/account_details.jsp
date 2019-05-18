@@ -41,38 +41,40 @@
                       <label class="col-lg-2 control-label"></label>
                       <div class="col-lg-8">
                           <c:if test="${errorMsg != null}">
-                              <p style="color: red">${errorMsg}</p>
+                              ${errorMsg}
                           </c:if>
                       </div>
                     </div>
                     <input type="hidden" name="doAction" value="update">
+                    <input type="hidden" id="username" name="username" value="${UserInfo.username}" required>
                     <div class="form-group">
                       <label class="col-lg-2 control-label" for="fulname">Họ tên </label>
+                      
                       <div class="col-lg-8">
-                          <input type="text" id="fullname" class="form-control" name="fullname" required>
+                          <input type="text" id="fullname" class="form-control" name="fullname" value="${UserInfo.fullname}" required>
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-lg-2 control-label" for="email">Số điện thoại </label>
                       <div class="col-lg-8">
-                          <input type="tel" id="phone_number" class="form-control" name="phone_number" pattern="^(?:0|84\s?)[1-9](?:\d\d){4}$" maxlength="11">
+                          <input type="tel" id="phone_number" class="form-control" name="phone_number" pattern="^(?:0|84\s?)[1-9](?:\d\d){4}$" maxlength="11" value="${UserInfo.mobile_phone}">
                           <p class="help-block">Chỉ sử dụng số điện thoại của Vietnam bắt đầu bằng 0 hoặc 84. VD 0975696854 hoặc 84975696854</p>
                       </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label">Giới tính</label>
                       <div class="col-md-8">
-                          <select class="form-control" name="gender">
-                            <option value="0">Chưa chọn</option>
-                            <option value="1">Nam</option>
-                            <option value="2">Nữ</option>
+                          <select class="form-control" name="gender" id="gender">
+                                <option value="0" >Chưa chọn</option>
+                                <option value="1" >Nam</option>
+                                <option value="2" >Nữ</option>
                         </select>
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-lg-2 control-label" for="">Ngày Sinh </label>
                       <div class="col-lg-8">
-                          <input type="date" id="date_of_birth" class="form-control" name="date_of_birth" min="1900-01-01">
+                          <input type="date" id="date_of_birth" class="form-control" name="date_of_birth" min="1900-01-01" value="${UserInfo.date_of_birth}">
                       </div>
                     </div>
                     <div class="row">
@@ -89,7 +91,15 @@
         <!-- END SIDEBAR & CONTENT -->
       </div>
     </div>
-
+        <script>
+            function select_gender() {
+                $("#gender").val(${UserInfo.gender});
+                         
+            }
+            $(document).ready(function (){
+                select_gender();
+            });
+        </script>
         <jsp:include page="template/footer.jsp" />
         <!-- END PAGE LEVEL JAVASCRIPTS -->
     </body>

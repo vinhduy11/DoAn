@@ -8,9 +8,25 @@
         <servlet-name>UserController</servlet-name>
         <servlet-class>Controllers.UserController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>verifyUserController</servlet-name>
+        <servlet-class>Controllers.verifyUserController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Account_Details</servlet-name>
+        <servlet-class>Controllers.Account_Details</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserController</servlet-name>
         <url-pattern>/UserController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>verifyUserController</servlet-name>
+        <url-pattern>/verifyUserController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Account_Details</servlet-name>
+        <url-pattern>/Account_Details</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
