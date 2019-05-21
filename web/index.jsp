@@ -223,46 +223,10 @@
               <!-- BEGIN SIDEBAR -->
               <div class="sidebar col-md-3 col-sm-4">
                 <ul class="list-group margin-bottom-25 sidebar-menu">
-                  <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Ladies</a></li>
-                  <li class="list-group-item clearfix dropdown">
-                    <a href="shop-product-list.html">
-                      <i class="fa fa-angle-right"></i>
-                      Mens
-
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li class="list-group-item dropdown clearfix">
-                        <a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Shoes </a>
-                          <ul class="dropdown-menu">
-                            <li class="list-group-item dropdown clearfix">
-                              <a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Classic </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Classic 1</a></li>
-                                <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Classic 2</a></li>
-                              </ul>
-                            </li>
-                            <li class="list-group-item dropdown clearfix">
-                              <a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Sport  </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Sport 1</a></li>
-                                <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Sport 2</a></li>
-                              </ul>
-                            </li>
-                          </ul>
-                      </li>
-                      <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Trainers</a></li>
-                      <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Jeans</a></li>
-                      <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Chinos</a></li>
-                      <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> T-Shirts</a></li>
-                    </ul>
-                  </li>
-                  <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Kids</a></li>
-                  <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Accessories</a></li>
-                  <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Sports</a></li>
-                  <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Brands</a></li>
-                  <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Electronics</a></li>
-                  <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Home & Garden</a></li>
-                  <li class="list-group-item clearfix"><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Custom Link</a></li>
+                    <li class="list-group-item clearfix"><a href="/DoAn/Product?category=0&page=1&recordsPerPage=5"><i class="fa fa-angle-right"></i> Tất cả</a></li>
+                    <li class="list-group-item clearfix"><a href="/DoAn/Product?category=7&page=1&recordsPerPage=5"><i class="fa fa-angle-right"></i> Áo</a></li>
+                    <li class="list-group-item clearfix"><a href="/DoAn/Product?category=4&page=1&recordsPerPage=5"><i class="fa fa-angle-right"></i> Quần</a></li>
+                    <li class="list-group-item clearfix"><a href="/DoAn/Product?category=8&page=1&recordsPerPage=5"><i class="fa fa-angle-right"></i> Phụ kiện</a></li>
                 </ul>
               </div>
               <!-- END SIDEBAR -->
