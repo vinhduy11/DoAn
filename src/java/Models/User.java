@@ -13,16 +13,16 @@ import java.text.SimpleDateFormat;
  * @author vinhd
  */
 public class User {
-    String user_id;
-    String username;
-    String password;
-    String fullname;
-    String mobile_phone="";
-    String email;
-    Integer gender=0;
-    String date_of_birth;
-    Integer status;
-    String created_at;
+    private String user_id;
+    private String username;
+    private String password;
+    private String fullname;
+    private String mobile_phone="";
+    private String email;
+    private Integer gender=0;
+    private String date_of_birth;
+    private Integer status;
+    private String created_at;
 
     public String getUser_id() {
         return user_id;

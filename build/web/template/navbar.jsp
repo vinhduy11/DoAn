@@ -99,40 +99,16 @@
         <li><a href="<%= url %>" target="">Trang chủ</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-            Đồ Nam
+            Sản phẩm
 
           </a>
 
           <!-- BEGIN DROPDOWN MENU -->
           <ul class="dropdown-menu">
-            <li><a href="shop-product-list.html">Running Shoes</a></li>
-            <li><a href="shop-product-list.html">Jackets and Coats</a></li>
-          </ul>
-          <!-- END DROPDOWN MENU -->
-        </li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-            Đồ Nữ
-
-          </a>
-
-          <!-- BEGIN DROPDOWN MENU -->
-          <ul class="dropdown-menu">
-            <li><a href="shop-product-list.html">Running Shoes</a></li>
-            <li><a href="shop-product-list.html">Jackets and Coats</a></li>
-          </ul>
-          <!-- END DROPDOWN MENU -->
-        </li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-            Phụ kiện
-
-          </a>
-
-          <!-- BEGIN DROPDOWN MENU -->
-          <ul class="dropdown-menu">
-            <li><a href="shop-product-list.html">Running Shoes</a></li>
-            <li><a href="shop-product-list.html">Jackets and Coats</a></li>
+            <li><a href="/DoAn/Product?category=0&page=1&recordsPerPage=5">Tất cả</a></li>
+            <li><a href="/DoAn/Product?category=4&page=1&recordsPerPage=5">Quần</a></li>
+            <li><a href="/DoAn/Product?category=7&page=1&recordsPerPage=5">Áo</a></li>
+            <li><a href="/DoAn/Product?category=8&page=1&recordsPerPage=5">Phụ kiện</a></li>
           </ul>
           <!-- END DROPDOWN MENU -->
         </li>

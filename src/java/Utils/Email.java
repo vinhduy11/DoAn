@@ -22,7 +22,7 @@ public class Email {
     private static final String SMTP_HOST = "smtp.gmail.com";
     private static final String SMTP_PORT = "587";
     private static final String SMTP_USER = "vinhduy11";
-    private static final String SMTP_PASS = "";
+    private static final String SMTP_PASS = "VDuy0110";
     private static Session session;
     
     public static Email getInstance() {

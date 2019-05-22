@@ -16,6 +16,10 @@
         <servlet-name>Account_Details</servlet-name>
         <servlet-class>Controllers.Account_Details</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProductController</servlet-name>
+        <servlet-class>Controllers.ProductController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserController</servlet-name>
         <url-pattern>/UserController</url-pattern>
@@ -27,6 +31,10 @@
     <servlet-mapping>
         <servlet-name>Account_Details</servlet-name>
         <url-pattern>/Account_Details</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductController</servlet-name>
+        <url-pattern>/Product</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
