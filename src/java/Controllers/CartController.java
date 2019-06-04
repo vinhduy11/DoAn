@@ -52,12 +52,13 @@ public class CartController extends HttpServlet {
                 Integer ProductId = Integer.parseInt(request.getParameter("ProductId"));
                 Integer Quantities = Integer.parseInt(request.getParameter("Quantities"));
                 String action = request.getParameter("action");
-
+                Long TransactionID = OrderDAO.getLastOrderId().getId() + 1;
+                sessions.setAttribute("order_id", TransactionID);
+                    
                 if (ProductId > 0) {
                     Item item;
                     Product p = ProductDAO.getProductbyId(ProductId);
-                    Long TransactionID = System.currentTimeMillis() / 1000L;
-                    sessions.setAttribute("order_id", TransactionID);
+                    
                     switch(action) {
                         case "add": 
                             if (p != null) {

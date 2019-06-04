@@ -15,6 +15,7 @@ import com.paypal.api.payments.Payer;
 import com.paypal.api.payments.Payment;
 import com.paypal.api.payments.PaymentExecution;
 import com.paypal.api.payments.RedirectUrls;
+import com.paypal.api.payments.RelatedResources;
 import com.paypal.api.payments.Transaction;
 import com.paypal.base.rest.APIContext;
 import com.paypal.base.rest.PayPalRESTException;
@@ -131,10 +132,11 @@ public class PaypalPayment {
  
         PaymentExecution paymentExecution = new PaymentExecution();
         paymentExecution.setPayerId(req.getParameter("PayerID"));
+        String id = "";
         try {
             Payment createdPayment = payment.execute(apiContext, paymentExecution);
             
-            return createdPayment;
+            return payment;
         } catch (PayPalRESTException e) {
             System.err.println(e.getDetails());
         }
