@@ -7,7 +7,7 @@ package Controllers;
 
 import Models.MyUtils;
 import Models.User;
-import Models.UserDAO;
+import DAO.UserDAO;
 import Utils.Email;
 import Utils.verifyUtils;
 import java.io.IOException;
@@ -253,10 +253,12 @@ public class UserController extends HttpServlet {
                     break;
                 case "logout":
             
-                    if ((Boolean) session.getAttribute("isLogged")) {
+                    if ((Boolean) session.getAttribute("isLogged")  && session.getAttribute("UserInfo") != null) {
                         session.invalidate();
                         errorMsg = "You are successfully logged out!";  
 
+                        response.sendRedirect(request.getContextPath() + "/index.jsp");
+                    } else {
                         response.sendRedirect(request.getContextPath() + "/index.jsp");
                     }
                     break;

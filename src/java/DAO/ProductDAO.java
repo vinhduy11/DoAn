@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Models;
+package DAO;
 
+import Models.Product;
 import Utils.MySQL_Driver;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -48,6 +49,7 @@ public class ProductDAO {
             
             while (rs.next()) {
                     Product product = new Product();
+                    product.setProduct_id(rs.getInt("product_id"));
                     product.setProduct_name(rs.getString("product_name"));
                     product.setProduct_desc(rs.getString("product_desc"));
                     product.setPrice(rs.getInt("price"));
@@ -89,6 +91,37 @@ public class ProductDAO {
                     count = rs.getInt("quantities");
             }
             return count;
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public static Product getProductbyId(Integer product_id) throws ClassNotFoundException {
+        Product product=null;
+        try {
+            connect = db.connect();
+            
+            preparedStatement = connect
+                        .prepareStatement("SELECT * FROM products where product_id = ?");
+            preparedStatement.setInt(1, product_id);
+                
+            ResultSet rs = preparedStatement.executeQuery();
+            
+            while (rs.next()) {
+                    product = new Product();
+                    product.setProduct_id(rs.getInt("product_id"));
+                    product.setProduct_name(rs.getString("product_name"));
+                    product.setProduct_desc(rs.getString("product_desc"));
+                    product.setPrice(rs.getInt("price"));
+                    product.setQuantities(rs.getInt("quantities"));
+                    product.setSize(rs.getString("size"));
+                    product.setImg_url(rs.getString("img_url"));
+            }
+            
+            
+            return product;
         } catch (SQLException e)
         {
             e.printStackTrace();

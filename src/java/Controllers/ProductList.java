@@ -6,7 +6,7 @@
 package Controllers;
 
 import Models.Product;
-import Models.ProductDAO;
+import DAO.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author vinhd
  */
-public class ProductController extends HttpServlet {
+public class ProductList extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,7 +45,6 @@ public class ProductController extends HttpServlet {
             
             Integer rows = ProductDAO.getTotalProductCountInCategory(category);
             
-            
             Integer offset=0;
             Integer from=0;
             Integer to=0;
@@ -57,7 +56,6 @@ public class ProductController extends HttpServlet {
             else {
                 nOfPages = (rows / recordsPerPage)+1;
             }
-            System.out.println(nOfPages);
             
             if (rows <= recordsPerPage) {
                 offset = 0;
@@ -79,7 +77,7 @@ public class ProductController extends HttpServlet {
             request.setAttribute("total", rows);
             request.setAttribute("recordsPerPage", recordsPerPage);
             request.setAttribute("category", category);
-            RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/view_product.jsp");
+            RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/product_list.jsp");
             dispatcher.forward(request, response);
         }
     }
@@ -99,7 +97,7 @@ public class ProductController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ProductController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductList.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -117,7 +115,7 @@ public class ProductController extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ProductController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductList.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

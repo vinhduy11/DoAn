@@ -5,7 +5,7 @@
  */
 package Controllers;
 
-import Models.UserDAO;
+import DAO.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;

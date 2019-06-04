@@ -7,7 +7,7 @@ package Controllers;
 
 import Models.MyUtils;
 import Models.User;
-import Models.UserDAO;
+import DAO.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -48,7 +48,6 @@ public class Account_Details extends HttpServlet {
             if (loginedUser == null) {
                 // Redirect to login page.
                 response.sendRedirect(request.getContextPath() + "/login");
-                return;
             }
             User user = UserDAO.getUserInfos(loginedUser.getUsername());
             // Store info to the request attribute before forwarding.

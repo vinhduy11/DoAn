@@ -3,7 +3,12 @@
     Created on : May 20, 2019, 10:44:14 PM
     Author     : vinhd
 --%>
+<%@page import="Models.Item"%>
+<%@page import="java.util.HashMap"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<% 
+    String url = request.getContextPath().toString();
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -70,12 +75,12 @@
                     <img src="assets/imgs/${item.getImg_url()}" class="img-responsive" alt="Berry Lace Dress">
                     <div>
                       <a href="assets/imgs/${item.getImg_url()}" class="btn btn-default fancybox-button">Zoom</a>
-                      <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
+                      <a href="/DoAn/Item?id=${item.getProduct_id()}" class="btn btn-default fancybox-fast-view">View</a>
                     </div>
                   </div>
                   <h3><a href="shop-item.html">${item.getProduct_name()}</a></h3>
                   <div class="pi-price">${item.getPrice()}</div>
-                  <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
+                  <a onclick="saveProducttoCart(${item.getProduct_id()})" class="btn btn-default add2cart">Add to cart</a>
                 </div>
               </div>
               <!-- PRODUCT ITEM END -->
@@ -130,7 +135,21 @@
                 var recordsPerPage = urlParams.get('recordsPerPage');
                 $("#limitSelect").val(recordsPerPage);
             }
-            jQuery(document).ready(function() {
+            
+            function saveProducttoCart(productId) {
+                if (productId > 0 && productId != undefined) {
+                    var quantities = $("#quantity").val();
+                    $.get("/DoAn/Cart", {"ProductId": productId, "Quantities": 1, "action": "add"}, function(res){
+                        if (res === "no session") {
+                            window.location.href = "<%=url%>/login.jsp";
+                        } else {
+                            window.location.reload();
+                        }
+                    });
+                }
+            }
+            
+            jQuery(document).ready(function() {                
                 $("#limitSelect").change(function (){
                     limitSelect();
                 });

@@ -268,10 +268,10 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("              <!-- BEGIN SIDEBAR -->\n");
       out.write("              <div class=\"sidebar col-md-3 col-sm-4\">\n");
       out.write("                <ul class=\"list-group margin-bottom-25 sidebar-menu\">\n");
-      out.write("                    <li class=\"list-group-item clearfix\"><a href=\"/DoAn/Product?category=0&page=1&limit=5\"><i class=\"fa fa-angle-right\"></i> Tất cả</a></li>\n");
-      out.write("                    <li class=\"list-group-item clearfix\"><a href=\"/DoAn/Product?category=4&page=1&limit=5\"><i class=\"fa fa-angle-right\"></i> Áo</a></li>\n");
-      out.write("                    <li class=\"list-group-item clearfix\"><a href=\"/DoAn/Product?category=7&page=1&limit=5\"><i class=\"fa fa-angle-right\"></i> Quần</a></li>\n");
-      out.write("                    <li class=\"list-group-item clearfix\"><a href=\"/DoAn/Product?category=8&page=1&limit=5\"><i class=\"fa fa-angle-right\"></i> Phụ kiện</a></li>\n");
+      out.write("                    <li class=\"list-group-item clearfix\"><a href=\"/DoAn/Product?category=0&page=1&recordsPerPage=5\"><i class=\"fa fa-angle-right\"></i> Tất cả</a></li>\n");
+      out.write("                    <li class=\"list-group-item clearfix\"><a href=\"/DoAn/Product?category=7&page=1&recordsPerPage=5\"><i class=\"fa fa-angle-right\"></i> Áo</a></li>\n");
+      out.write("                    <li class=\"list-group-item clearfix\"><a href=\"/DoAn/Product?category=4&page=1&recordsPerPage=5\"><i class=\"fa fa-angle-right\"></i> Quần</a></li>\n");
+      out.write("                    <li class=\"list-group-item clearfix\"><a href=\"/DoAn/Product?category=8&page=1&recordsPerPage=5\"><i class=\"fa fa-angle-right\"></i> Phụ kiện</a></li>\n");
       out.write("                </ul>\n");
       out.write("              </div>\n");
       out.write("              <!-- END SIDEBAR -->\n");

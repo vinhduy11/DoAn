@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Models;
+package DAO;
 
+import Models.User;
 import Utils.MySQL_Driver;
 import java.sql.Connection;
 import java.sql.Date;
@@ -113,6 +114,7 @@ public class UserDAO {
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
                 User user = new User();
+                user.setUser_id(rs.getString("customer_id"));
                 user.setUsername(rs.getString("username"));
                 user.setFullname(rs.getString("full_name"));
                 user.setMobile_phone(rs.getString("mobile_phone"));

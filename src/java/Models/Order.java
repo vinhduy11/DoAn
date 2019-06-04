@@ -10,16 +10,18 @@ package Models;
  * @author vinhd
  */
 public class Order {
-    Integer id;
-    Integer customer_id;
-    Integer status;
-    String created_at;
+    private Long id;
+    private Integer customer_id;
+    private Integer status;
+    private Integer total;
+    private String payment_id;
+    private String created_at;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -45,6 +47,22 @@ public class Order {
 
     public void setCreated_at(String created_at) {
         this.created_at = created_at;
+    }
+
+    public Integer getTotal() {
+        return total;
+    }
+
+    public void setTotal(Integer total) {
+        this.total = total;
+    }
+
+    public String getPayment_id() {
+        return payment_id;
+    }
+
+    public void setPayment_id(String payment_id) {
+        this.payment_id = payment_id;
     }
     
     

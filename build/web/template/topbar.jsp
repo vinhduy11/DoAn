@@ -6,6 +6,9 @@
 
 <%@page import="Models.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% 
+    String url = request.getContextPath().toString();
+%>
 <!-- BEGIN TOP BAR -->
     <div class="pre-header">
         <div class="container">
@@ -27,14 +30,13 @@
                             if(info != null)  {
                         %>            
                             <li>Chào mừng <%= info.getFullname() %></li>
+                            <li><a href="<%=url%>/carts.jsp">Giỏ hàng</a></li>
                             <li><a href="/DoAn/account.jsp">Tài khoản</a></li>
-                            <li><a href="shop-checkout.html">Giỏ hàng</a></li>
                             <li><a href="UserController?doAction=logout">Đăng xuất</a></li>
                         <%
                             } else {
                         %>
                             <li>Chào mừng khách hàng</li>
-                            <li><a href="shop-checkout.html">Giỏ hàng</a></li>
                             <li><a href="login.jsp">Đăng nhập</a></li>
                             <li><a href="register.jsp">Đăng ký</a></li>
                         <%
